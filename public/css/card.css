@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+a{
+    text-decoration : none ; 
+}
+.listing-card{
+    border : none !important ; 
+    margin-bottom: 2rem !important;
+}
+.card-img-top{
+    border-radius: 1rem;
+    width : 100% !important ; 
+    object-fit: cover;
+}
+.card-body{
+    padding : 0 !important ; 
+}
+.card-img-overlay{
+    opacity : 0 ; 
+}
+.card-img-overlay:hover{
+    opacity : 0.1;
+    background-color: white;
+}
+.row{
+    width : 100% !important ; 
+}
+/* row-cols-lg-4 row-cols-md-2 row-cols-sm-1 */
+.card-title{
+    font-weight : 600 ; 
+}
+.card-price{
+    font-size : 1rem;
+    font-weight : light;
+}

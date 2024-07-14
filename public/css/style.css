@@ -1,0 +1,88 @@
+body{
+    display : flex; 
+    font-family: "Plus Jakarta Sans", sans-serif;
+    flex-direction: column;
+    min-height : 100vh ;
+}
+.listBox{
+ flex : 1;    
+}
+.navbar{
+    height : 5rem ;   
+    position : sticky !important  ; 
+    background-color: white;
+}
+.fa-compass{
+    color : #fe424d ; 
+    font-size : 2rem ; 
+}
+.nav-link{
+    color : #222222 !important ; 
+}
+
+.footer-info-links a {
+    text-decoration: none;
+    color :#222222;
+}
+.footer-info-links a p:hover{
+    text-decoration: underline;
+}
+.footer-info-links a p {
+    display : inline-block;
+    font-size : 0.9rem;
+}
+.footer-information {
+    display : flex; 
+    height : 8rem ; 
+    background-color: #ebebeb;
+    flex-direction : column ;
+    justify-content : space-evenly ; 
+    align-items : center ; 
+
+}
+.footer-info-socials{
+    font-size: 1.2rem;
+}
+.footer-info-socials i{
+    margin-right : 1rem ;
+}
+.footer-header{
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    gap : 40px;
+}
+.footer-language {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap : 10px;
+}
+.footer-language div{
+   display : flex;
+   justify-content: center;
+   padding-top  : 9px;
+   gap : 20px;
+ 
+}
+.footer-language i{
+    font-size : 1rem; 
+}
+.footer-language div h2{
+    font-size : 1rem;
+    font-weight : 600 ; 
+}
+.listBox{
+    box-sizing: border-box;
+    width : 100% !important;
+    padding-left: 70px;
+    padding-right: 60px;
+}
+
+/* styling map */
+#map {
+    height : 400px ; 
+    width : 90vh ; 
+    border-radius: 10px;
+}

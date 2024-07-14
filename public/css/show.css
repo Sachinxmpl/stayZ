@@ -1,0 +1,25 @@
+.show-image{
+    height : 40vh ; 
+
+}
+.buttons{
+    display : flex; 
+    gap : 20px ; 
+}
+.delete-btn{
+    margin-top : 10px !important ; 
+    border : none !important ; 
+    padding-left :  20px !important ; 
+    padding-right :  20px !important ; 
+    border-radius: 8px !important;
+}
+.buttons{
+    margin-bottom : 20px ; 
+}
+.show-body{
+    margin-top : 8px;
+}
+
+.show-body card-price{
+    font-weight : 600 ; 
+}
