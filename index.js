@@ -39,9 +39,9 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "public")));
 
 
-let dbUrl = process.env.MongoAtlasDbUrl 
+let dbUrl = process.env.MongoAtlasDbUrl  //skipped
 async function main() {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect("mongodb://localhost:27017/wanderlist");
 }
 main()
   .then(() => console.log("Database connected successfully"))

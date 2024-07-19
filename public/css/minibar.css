@@ -1,0 +1,64 @@
+
+#filter-container{
+    display : flex ; 
+    flex-direction: row;
+    align-items: center;
+}
+
+
+#filters {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+}
+
+
+#filters::-webkit-scrollbar{
+    display: none;
+}
+
+@media only screen and (max-width: 860px) {
+   #filter-container{
+    display: flex;
+    flex-direction: column;
+    margin : 0px 20px ; 
+    overflow-x: hidden ;
+   }
+   #filters {
+    overflow-x: auto;
+   }
+  }
+
+.filter {
+    text-align: center;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    opacity: 0.65;
+  }
+
+  .filter p {
+    font-size: 0.8rem;
+  }
+
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .tax-info-display {
+    display: none;
+  }
+
+  .tax-toggle {
+    min-width: 230px ;  
+    border: 1px solid black;
+    border-radius: 0.6rem;
+    height: 3rem;
+    padding: 0.7rem 1rem 0.7rem 0rem;
+    margin-left: 3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    width: fit-content;
+  }
+

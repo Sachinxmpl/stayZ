@@ -29,8 +29,14 @@ a{
 /* row-cols-lg-4 row-cols-md-2 row-cols-sm-1 */
 .card-title{
     font-weight : 600 ; 
+    margin-top : 8.5px !important ;; 
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
 }
 .card-price{
     font-size : 1rem;
-    font-weight : light;
+    font-weight : light ;
+}
+.extra-info{
+    opacity : 0.6 ; 
 }

@@ -1,170 +1,203 @@
 <% layout("/layouts/boilerplate") -%>
 
-<style>
-  .filter {
-    text-align: center;
-    margin-top: 2rem;
-    margin-right: 2rem;
-    opacity: 0.65;
-  }
-  .filter p {
-    font-size: 0.8rem;
-  }
-  #filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter:hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-  .tax-info-display{
-    display : none ;
-  }
-  .tax-toggle{
-    border : 1px solid black ; 
-    border-radius: 1rem ;
-    height : 3rem ;
-    padding :0.7rem 2rem 1rem 2rem ;
-    margin-left : 5rem ;  
-  }
-</style>
 
-<body>
-  <!-- <form method="GET" action="/listings/new">
+  <body>
+    <!-- <form method="GET" action="/listings/new">
         <button>Create new listing </button>
     </form> -->
 
-  <div id="filters">
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-fire"></i>
-      </div>
-      <p>Trending</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-bed"></i>
-      </div>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-mountain-city"></i>
-      </div>
-      <p>Mountain-city</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-brands fa-fort-awesome"></i>
-      </div>
-      <p>Castles</p>
+    <div id="filter-container">
+      <div id="filters">
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-fire"></i>
+                </div>
+                <p>Trending</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-brands fa-fort-awesome"></i>
+                </div>
+                <p>Castles</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-tents"></i>
+                </div>
+                <p>Camping</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-brands fa-fort-awesome"></i>
+                </div>
+                <p>Castles</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-tents"></i>
+                </div>
+                <p>Camping</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-tents"></i>
+                </div>
+                <p>Camping</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-tents"></i>
+                </div>
+                <p>Camping</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-tents"></i>
+                </div>
+                <p>Camping</p>
+              </div>
+
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-bed"></i>
+                </div>
+                <p>Rooms</p>
+              </div>
+              <div class="filter">
+                <div>
+                  <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <p>Mountain-city</p>
+              </div>
+
+
+
+              <div class="filter">
+                <div>
+                  <i class="fa-brands fa-fort-awesome"></i>
+                </div>
+                <p>Castles</p>
+              </div>
+       </div>
+              <div class="tax-toggle">
+                <div class="form-check-reverse form-switch toggle-box">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                  <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes </label>
+                </div>
+              </div>
+         
     </div>
 
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-tents"></i>
-      </div>
-      <p>Camping</p>
-    </div>
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
+      <% for(let listing of alllistings) {%>
 
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-bed"></i>
-      </div>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-mountain-city"></i>
-      </div>
-      <p>Mountain-city</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-brands fa-fort-awesome"></i>
-      </div>
-      <p>Castles</p>
-    </div>
+        <a href="/listings/<%=listing._id%>">
+          <div class="card col-lg-4 col-md-6 col-sm-12 listing-card" style="width: 20rem">
+            <img class="card-img-top" src="<%=listing.image.url%>" alt="listing-image" style="height: 19rem" />
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-title">
+                <%=listing.location%>, <%=listing.country%>
+              </p>
+              <div class="extra-info">
+                <% if (listing.owner) { %>
+                  Hosted by <%= listing.owner.username %>
+                <% } else { %>
+                  Hosted by Unknown
+                <% } %>
+                <br>
+                  <%=listing.title%>
+              </div>
 
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-tents"></i>
-      </div>
-      <p>Camping</p>
-    </div>
+              <h5 class="card-price">
+                  Rs <%=listing.price.toLocaleString("en-IN")%>
+                  <span class="tax-info tax-info-display">total before taxes</span>
+              </h5>
 
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-bed"></i>
-      </div>
-      <p>Rooms</p>
-    </div>
-    <div class="filter">
-      <div>
-        <i class="fa-solid fa-mountain-city"></i>
-      </div>
-      <p>Mountain-city</p>
-    </div>
-  
-
-  
-    <div class="filter">
-      <div>
-        <i class="fa-brands fa-fort-awesome"></i>
-      </div>
-      <p>Castles</p>
-    </div>
-
-    <div class="tax-toggle">
-          <div class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes </label>
+            </div>
           </div>
+        </a>
+        <% } %>
     </div>
-  </div>
-
-  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
-    <% for(let listing of alllistings) {%>
-
-    <a href="/listings/<%=listing._id%>">
-      <div
-        class="card col-lg-4 col-md-6 col-sm-12 listing-card"
-        style="width: 20rem"
-      >
-        <img
-          class="card-img-top"
-          src="<%=listing.image.url%>"
-          alt="listing-image"
-          style="height: 19rem"
-        />
-        <div class="card-img-overlay"></div>
-        <div class="card-body">
-          <p class="card-title"><%= listing.title %></p>
-          <h5 class="card-price">
-            Rs <%=listing.price.toLocaleString("en-IN")%> night
-            <p class="tax-info tax-info-display"> 18% Government service tax added </p>
-          </h5>
-          
-        </div>
-      </div>
-    </a>
-    <% } %>
-  </div>
 
 
 
+    
+    <script>
+      const taxSwitch = document.getElementById("flexSwitchCheckDefault")
+      taxSwitch.addEventListener("click", () => {
+        let taxInfos = document.querySelectorAll(".tax-info")
+        taxInfos.forEach(element => {
+          element.classList.toggle("tax-info-display")
+        });
+      })
+    </script>
 
-  <script> 
-        const taxSwitch = document.getElementById("flexSwitchCheckDefault")
-        taxSwitch.addEventListener("click" , ()=>{
-          let taxInfos = document.querySelectorAll(".tax-info")
-          taxInfos.forEach(element => {
-                element.classList.toggle("tax-info-display")
-          });
-        })
-  </script>
 
-
-</body>
+  </body>

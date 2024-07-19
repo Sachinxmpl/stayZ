@@ -86,3 +86,8 @@ body{
     width : 90vh ; 
     border-radius: 10px;
 }
+
+.card-price{
+   border-bottom: 0.5px solid black;
+   width: fit-content;
+}
