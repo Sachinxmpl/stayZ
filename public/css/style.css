@@ -10,7 +10,7 @@ body{
 .navbar{
     height : 5rem ;   
     position : sticky !important  ; 
-    background-color: white;
+    background-color: white !important ; 
 }
 .fa-compass{
     color : #fe424d ; 

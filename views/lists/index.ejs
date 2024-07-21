@@ -1,145 +1,123 @@
 <% layout("/layouts/boilerplate") -%>
 
-
   <body>
-    <!-- <form method="GET" action="/listings/new">
-        <button>Create new listing </button>
-    </form> -->
-
-    <div id="filter-container">
-      <div id="filters">
-        <div class="filter" data-category="all">
-          <div>
-            <i class="fa-brands fa-square-font-awesome-stroke"></i>
+    <div class="container mt-3">
+      <div id="filter-container" class="mb-4">
+        <div id="filters" class="d-flex flex-wrap">
+          <div class="filter active" data-category="all">
+            <div>
+              <i class="fa-brands fa-square-font-awesome-stroke"></i>
+            </div>
+            <p>Stayz</p>
           </div>
-          <p>Stayz</p>
+          <div class="filter" data-category="Lake">
+            <div>
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <p>Lake</p>
+          </div>
+          <div class="filter" data-category="Rooms">
+            <div>
+              <i class="fa-solid fa-bed"></i>
+            </div>
+            <p>Rooms</p>
+          </div>
+          <div class="filter" data-category="Mountain">
+            <div>
+              <i class="fa-solid fa-mountain-city"></i>
+            </div>
+            <p>Mountain</p>
+          </div>
+          <div class="filter" data-category="Castles">
+            <div>
+              <i class="fa-brands fa-fort-awesome"></i>
+            </div>
+            <p>Castles</p>
+          </div>
+          <div class="filter" data-category="Camping">
+            <div>
+              <i class="fa-solid fa-tents"></i>
+            </div>
+            <p>Camping</p>
+          </div>
+          <div class="filter" data-category="Beach">
+            <div>
+              <i class="fa-regular fa-umbrella-beach"></i>
+            </div>
+            <p>Beach</p>
+          </div>
+          <div class="filter" data-category="Islands">
+            <div>
+              <i class="fa-solid fa-water"></i>
+            </div>
+            <p>Islands</p>
+          </div>
+          <div class="filter" data-category="Arctic">
+            <div>
+              <i class="fa-duotone fa-solid fa-droplet"></i>
+            </div>
+            <p>Arctic</p>
+          </div>
+          <div class="filter" data-category="Towers">
+            <div>
+              <i class="fa-solid fa-tower-observation"></i>
+            </div>
+            <p>Towers</p>
+          </div>
+          <div class="filter" data-category="Yurts">
+            <div>
+              <i class="fa-duotone fa-solid fa-tent"></i>
+              <i class="fa-light fa-house-blank"></i>
+            </div>
+            <p>Yurts</p>
+          </div>
+          
         </div>
-        <div class="filter" data-category="Lake">
-          <div>
-            <i class="fa-solid fa-fire"></i>
+        <div class="tax-toggle mt-3">
+          <div class="form-check-reverse form-switch toggle-box">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes </label>
           </div>
-          <p>Lake</p>
-        </div>
-        <div class="filter" data-category="Rooms">
-          <div>
-            <i class="fa-solid fa-bed"></i>
-          </div>
-          <p>Rooms</p>
-        </div>
-        <div class="filter" data-category="Mountain">
-          <div>
-            <i class="fa-solid fa-mountain-city"></i>
-          </div>
-          <p>Mountain</p>
-        </div>
-        <div class="filter" data-category="Castles">
-          <div>
-            <i class="fa-brands fa-fort-awesome"></i>
-          </div>
-          <p>Castles</p>
-        </div>
-        <div class="filter" data-category="Camping">
-          <div>
-            <i class="fa-solid fa-tents"></i>
-          </div>
-          <p>Camping</p>
-        </div>
-        <div class="filter" data-category="Beach">
-          <div>
-            <i class="fa-regular fa-umbrella-beach"></i>
-          </div>
-          <p>Beach</p>
-        </div>
-        <div class="filter" data-category="Islands">
-          <div>
-            <i class="fa-solid fa-water"></i>
-          </div>
-          <p>Islands</p>
-        </div>
-        <div class="filter" data-category="Arctic">
-          <div>
-            <i class="fa-duotone fa-solid fa-droplet"></i>
-          </div>
-          <p>Arctic</p>
-        </div>
-        <div class="filter" data-category="Towers">
-          <div>
-            <i class="fa-solid fa-tower-observation"></i>
-          </div>
-          <p>Towers</p>
-        </div>
-        <div class="filter" data-category="Yurts">
-          <div>
-            <i class="fa-duotone fa-solid fa-tent"></i><i class="fa-light fa-house-blank"></i>
-          </div>
-          <p>Yurts</p>
-        </div>
-        <div class="filter" data-category="Surfing">
-          <div>
-            <i class="fa-solid fa-bed"></i>
-          </div>
-          <p>Surfing</p>
-        </div>
-        <div class="filter" data-category="TinyHomes">
-          <div>
-            <i class="fa-solid fa-bed"></i>
-          </div>
-          <p>TinyHomes</p>
         </div>
       </div>
-              <div class="tax-toggle">
-                <div class="form-check-reverse form-switch toggle-box">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                  <label class="form-check-label" for="flexSwitchCheckDefault">Display total before taxes </label>
-                </div>
-              </div>
-         
-    </div>
-
-    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
-      <% for(let listing of alllistings) {%>
-
-        <a href="/listings/<%=listing._id%>">
-          <div class="card col-lg-4 col-md-6 col-sm-12 listing-card" style="width: 20rem">
-            <img class="card-img-top" src="<%=listing.image.url%>" alt="listing-image" style="height: 19rem" />
-            <div class="card-img-overlay"></div>
-            <div class="card-body">
-              <p class="card-title">
-                <%=listing.location%>, <%=listing.country%>
-              </p>
-              <div class="extra-info">
-                <% if (listing.owner) { %>
-                  Hosted by <%= listing.owner.username %>
-                <% } else { %>
-                  Hosted by Unknown
-                <% } %>
-                <br>
-                  <%=listing.title%>
-              </div>
-
-              <h5 class="card-price">
-                  Rs <%=listing.price.toLocaleString("en-IN")%>
-                  <span class="tax-info tax-info-display">total before taxes</span>
-              </h5>
-
-            </div>
-          </div>
-        </a>
-        <% } %>
-    </div>
-
-
-
     
-    <script>
-      const taxSwitch = document.getElementById("flexSwitchCheckDefault")
-      taxSwitch.addEventListener("click", () => {
-        let taxInfos = document.querySelectorAll(".tax-info")
-        taxInfos.forEach(element => {
-          element.classList.toggle("tax-info-display")
-        });
-      })
-    </script>
-
-
+      <div class="listings-container">
+        <div class="loader" id="loader">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="no-listings" id="no-listings">No listings available</div>
+        <div class="row listings" id="listings">
+          <% for (let listing of alllistings) { %>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 listing" data-category="<%= listing.category %>">
+              <a href="/listings/<%= listing._id %>">
+                <div class="card listing-card">
+                  <img class="card-img-top" src="<%= listing.image.url %>" alt="listing-image" style="height: 19rem" />
+                  <div class="card-body">
+                    <p class="card-title">
+                      <%= listing.location %>, <%= listing.country %>
+                    </p>
+                    <div class="extra-info">
+                      <% if (listing.owner) { %>
+                        Hosted by <%= listing.owner.username %>
+                      <% } else { %>
+                        Hosted by Unknown
+                      <% } %>
+                      <br>
+                      <%= listing.title %>
+                    </div>
+                    <h5 class="card-price">
+                      Rs <%= listing.price.toLocaleString("en-IN") %>
+                      <span class="tax-info tax-info-display">total before taxes</span>
+                    </h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    
   </body>
