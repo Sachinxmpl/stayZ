@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let dbUrl = process.env.MongoAtlasDbUrl  //skipped
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/stayZ");
+  await mongoose.connect(dbUrl);
 }
 main()
   .then(() => console.log("Database connected successfully"))
