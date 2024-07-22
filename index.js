@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !="production") {
+if (process.env.NODE_ENV != "production") {
   require('dotenv').config()
 }
 
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let dbUrl = process.env.MongoAtlasDbUrl  //skipped
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/wanderlist");
+  await mongoose.connect("mongodb://localhost:27017/stayZ");
 }
 main()
   .then(() => console.log("Database connected successfully"))
@@ -50,20 +50,22 @@ main()
 
 
 const store = MongoStore.create({
-      mongoUrl: dbUrl , 
-      crypto : {
-        secret: process.env.SECRET,
-      } , 
-      touchAfter : 24 * 3600 , 
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
 })
+
+
 const sessionOptions = {
-  store , 
+  store,
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
     expired: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    maxAge:  7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
 };
@@ -84,9 +86,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user ; 
+  res.locals.currUser = req.user;
   next();
 });
+
+
 
 
 //listings
@@ -96,7 +100,7 @@ app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 
 //users
-app.use("/",userRouter)
+app.use("/", userRouter)
 
 
 app.all("*", (req, res, next) => {

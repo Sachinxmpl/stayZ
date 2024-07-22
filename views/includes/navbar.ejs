@@ -1,64 +1,174 @@
 <style>
+  /* General Navbar Styles */
+  .navbar-custom {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #e50914; /* Netflix Red */
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #e50914; /* Netflix Red */
+  }
+
   .btn-search {
-    background-color: #59151a;
+    background-color: #e50914; /* Netflix Red */
     color: white;
-    padding: 0 1.2rem;
+    padding: 0.5rem 1.5rem;
     font-weight: 500;
     border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-search:hover {
+    background-color: #b00710;
   }
 
   .search-input {
     border-radius: 20px;
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
   }
 
-  .navbar-custom {
-    background-color: white  ;
-  }
-
-  .navbar-custom .navbar-collapse {
-    background-color: white;
+  .search-input:focus {
+    border-color: #e50914; /* Netflix Red */
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
   }
 
   .navbar-toggler {
-    border: none; 
+    border: none;
+    background-color: #000; /* Black */
+    padding: 0.25rem 0.5rem;
   }
 
   .navbar-toggler-icon {
-    color: #000; 
+    background-image: none;
+    font-size: 1rem;
+    color: #fff; /* White */
+  }
+
+  .navbar-toggler-icon::before {
+    content: "\f0c9"; /* Font Awesome Bars Icon */
+    font-family: FontAwesome;
+  }
+
+  /* Dropdown Menu Styles */
+  .dropdown-menu {
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Ensure background color */
+  }
+
+  .dropdown-menu a {
+    color: #555;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: #e50914; /* Netflix Red */
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  /* User Icon Styles */
+  .user-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .user-icon:hover {
+    color: #e50914; /* Netflix Red */
+    transform: scale(1.1);
+  }
+
+  .user-icon-login {
+    color: #555;
+  }
+
+  .user-icon-loggedin {
+    color: #e50914; /* Netflix Red */
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-info .user-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .user-info .username {
+    font-weight: 600;
+    color: #333;
   }
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top navbar-custom">
+<nav class="navbar navbar-expand-md navbar-custom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i> Stayz
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div class="navbar-nav me-auto">
         <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings/new">Add Item</a>
       </div>
-
+      <form class="d-flex ms-auto" role="search"  method="GET" action="/listings/search">
+        <input class="form-control me-2 search-input"  type="search" name="location" placeholder="Search Destinations"
+          aria-label="Search">
+          
+        <button class="btn btn-outline-danger btn-search" type="submit">Search</button>
+      </form>
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-input" type="search" placeholder="Search Destinations"
-            aria-label="Search">
-          <button class="btn btn-outline-danger btn-search" type="submit">Search</button>
-        </form>
-      </div>
-
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new"> Airbnb your home </a>
         <% if(!currUser){ %>
-          <a class="nav-link" aria-current="page" href="/signup"><b>Sign up </b></a>
-          <a class="nav-link" href="/login"><b>Login</b></a>
-          <% } %>
-            <% if(currUser) { %>
-              <a class="nav-link" href="/logout"><b>Logout</b></a>
-              <% } %>
+          <div class="dropdown">
+            <i class="fa fa-user user-icon user-icon-login dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/signup"><b>Sign up</b></a></li>
+              <li><a class="dropdown-item" href="/login"><b>Login</b></a></li>
+            </ul>
+          </div>
+        <% } %>
+        <% if(currUser) { %>
+          <div class="dropdown">
+            <div class="user-info dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user-circle user-icon user-icon-loggedin"></i>
+              <span class="username"><%= currUser.username %></span>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/logout"><b>Logout</b></a></li>
+            </ul>
+          </div>
+        <% } %>
       </div>
     </div>
   </div>
 </nav>
+

@@ -36,6 +36,8 @@ router.route("/").get(
 router.get("/new", isLoggedIn, listingController.newListingForm);
 
 
+router.get("/search", wrapAsync(listingController.searchListingThroughLocation))
+
 //show route
 router.route("/:id")
   .get(

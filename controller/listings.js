@@ -18,6 +18,14 @@ module.exports.newListingForm = (req, res) => {
 }
 
 
+module.exports.searchListingThroughLocation = async (req, res) => {
+
+    let location = req.query.location;
+    let alllistings = await Listing.find({ location })
+    res.render("lists/index.ejs" ,{alllistings} )
+  
+}
+
 module.exports.showListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findById(id).populate({
@@ -36,25 +44,25 @@ module.exports.showListing = async (req, res) => {
 
 
 module.exports.createListing = async (req, res, next) => {
-      let Georesponse = await geocodingClient.forwardGeocode({
-        query: req.body.listing.location,
-        limit: 1
-      })
-      .send()
-        
-      const url = req.file.path
-      const filename = req.file.filename
-      const newlisting = new Listing(req.body.listing);
+  let Georesponse = await geocodingClient.forwardGeocode({
+    query: req.body.listing.location,
+    limit: 1
+  })
+    .send()
 
-      newlisting.owner = req.user._id
-      newlisting.image = {
-        url, filename
-      }
-      newlisting.geometry = Georesponse.body.features[0].geometry
-      await newlisting.save(); 
+  const url = req.file.path
+  const filename = req.file.filename
+  const newlisting = new Listing(req.body.listing);
 
-      req.flash("success", "New listing created ");
-      res.redirect("/listings");
+  newlisting.owner = req.user._id
+  newlisting.image = {
+    url, filename
+  }
+  newlisting.geometry = Georesponse.body.features[0].geometry
+  await newlisting.save();
+
+  req.flash("success", "New listing created ");
+  res.redirect("/listings");
 }
 
 
