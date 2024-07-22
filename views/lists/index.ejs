@@ -99,13 +99,13 @@
                       <%= listing.location %>, <%= listing.country %>
                     </p>
                     <div class="extra-info">
-                      <% if (listing.owner) { %>
-                        Hosted by <%= listing.owner.username %>
-                      <% } else { %>
-                        Hosted by Unknown
-                      <% } %>
-                      <br>
-                      <%= listing.title %>
+                        <% if (listing.owner) { %>
+                          Hosted by <%= listing.owner.username %>
+                        <% } else { %>
+                          Hosted by Unknown
+                        <% } %>
+                        <br>
+                        <%= listing.title %>
                     </div>
                     <h5 class="card-price">
                       Rs <%= listing.price.toLocaleString("en-IN") %>

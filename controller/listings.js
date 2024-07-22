@@ -46,16 +46,12 @@ module.exports.createListing = async (req, res, next) => {
       const filename = req.file.filename
       const newlisting = new Listing(req.body.listing);
 
-      console.log(req.body)
-      console.log("Break")
-
       newlisting.owner = req.user._id
       newlisting.image = {
         url, filename
       }
       newlisting.geometry = Georesponse.body.features[0].geometry
-      let savedListing = await newlisting.save(); 
-      console.log(savedListing)
+      await newlisting.save(); 
 
       req.flash("success", "New listing created ");
       res.redirect("/listings");
