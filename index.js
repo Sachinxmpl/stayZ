@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 let dbUrl = process.env.MongoAtlasDbUrl  //skipped
 async function main() {
-  await mongoose.connect(dbUrl);
+   mongoose.connect(dbUrl);
 }
 main()
   .then(() => console.log("Database connected successfully"))
