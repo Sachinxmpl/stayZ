@@ -1,5 +1,5 @@
 
-### Deployed on [Link text](https://stayz.onrender.com)
+### Deployed on [stayZ_rander](https://stayz.onrender.com)
 
 ### stayZ is an online marketplace that connects property owners with travelers looking for short-term accommodations. This Express.js web app is designed to make property rental seamless and efficient.
 
